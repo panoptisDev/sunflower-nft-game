@@ -1,0 +1,30 @@
+{
+  "name": "test-utils",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "format": "prettier --config ../../.prettierrc --ignore-path ../../.prettierignore --check \"./**/*.ts\"",
+    "format:fix": "prettier --config ../../.prettierrc --ignore-path ../../.prettierignore --write \"./**/*.ts\"",
+    "lint": "eslint --ext .ts src",
+    "lint:fix": "pnpm lint --fix",
+    "typecheck": "tsc --noEmit --incremental false --composite false",
+    "clean": "rm -rf dist && rm -f tsconfig.build.tsbuildinfo",
+    "true": "echo ok",
+    "test:fix": "pnpm lint:fix && pnpm format:fix && pnpm test && pnpm typecheck"
+  },
+  "dependencies": {
+    "@types/glob": "7",
+    "@types/lodash": "^4.14.139",
+    "@types/retry-as-promised": "^2.3.3",
+    "bignumber.js": "9.0.1",
+    "conditional-type-checks": "^1.0.5",
+    "glob": "7.1.7",
+    "lodash": "^4.17.15",
+    "retry-as-promised": "^5.0.0",
+    "ts-essentials": "^7.0.1"
+  }
+}

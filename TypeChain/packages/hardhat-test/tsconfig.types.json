@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["./typechain-types"],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "lib": ["ES2018", "DOM"],
+    "skipLibCheck": true
+  }
+}

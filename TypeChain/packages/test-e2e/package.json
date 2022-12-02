@@ -1,0 +1,24 @@
+{
+  "name": "test-e2e",
+  "private": true,
+  "version": "9.9.11",
+  "scripts": {
+    "format": "prettier --config ../../.prettierrc --ignore-path ../../.prettierignore --check \"./**/*.ts\"",
+    "format:fix": "prettier --config ../../.prettierrc --ignore-path ../../.prettierignore --write \"./**/*.ts\"",
+    "lint": "eslint --ext .ts test",
+    "lint:fix": "pnpm lint --fix",
+    "typecheck": "tsc --noEmit --incremental false --composite false && tsc --noEmit --incremental false --composite false -p tsconfig.json",
+    "clean": "rm -rf dist contracts/* && rm -f tsconfig.build.tsbuildinfo && rm -rf build",
+    "test": "mocha --config ../../.mocharc.js",
+    "test:fix": "pnpm lint:fix && pnpm format:fix && pnpm test && pnpm typecheck"
+  },
+  "dependencies": {
+    "fs-extra": "^9.1.0",
+    "@types/fs-extra": "^9.0.7",
+    "typechain": "workspace:^8.1.0",
+    "@typechain/ethers-v5": "workspace:^10.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.2.0"
+  }
+}

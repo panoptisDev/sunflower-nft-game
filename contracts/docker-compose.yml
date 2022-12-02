@@ -1,0 +1,7 @@
+version: "3"
+services:
+  eth:
+    image: trufflesuite/ganache-cli:v6.12.2
+    entrypoint: node /app/ganache-core.docker.cli.js -m "random phrase to generate deterministic account numbers"
+    ports:
+      - "8545:8545"

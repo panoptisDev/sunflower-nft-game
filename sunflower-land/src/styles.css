@@ -1,0 +1,429 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@layer utilities {
+  .text-shadow {
+    text-shadow: 1px 1px #1f1f1f;
+  }
+  .text-shadow-md {
+    text-shadow: 2px 2px #1f1f1f;
+  }
+  .text-shadow-none {
+    text-shadow: none;
+  }
+  .img-highlight {
+    filter: drop-shadow(1px 1px 0px white) drop-shadow(-1px 0px 0px white)
+      drop-shadow(0px -1px 0px white);
+  }
+  .img-highlight-heavy {
+    filter: drop-shadow(2px 2px 0px white) drop-shadow(-2px 0px 0px white)
+      drop-shadow(0px -2px 0px white);
+  }
+  .separate-lines {
+    word-break: break-word;
+  }
+}
+
+body {
+  font-family: "Paytone One", sans-serif;
+  overflow: hidden;
+  text-shadow: 1px 1px #1f1f1f;
+  font-size: 22px;
+  letter-spacing: -0.4px;
+  word-spacing: 3px;
+  line-height: 20px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+#walletconnect-wrapper {
+  all: initial;
+}
+
+@media screen and (min-width: 480px) {
+  body {
+    font-size: 24px;
+    line-height: 22px;
+  }
+}
+
+* {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  /*
+        Introduced in Internet Explorer 10.
+        See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+      */
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Disable html number input arrows  */
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  /* Enable user-select, for ios(Safari) compatibility */
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+
+/*
+  Override React Bootstrap styles that don't play nicely
+*/
+
+.modal-content {
+  background: transparent;
+  border: none;
+}
+
+/* If modal content overflows the screen height then allow the window to scroll */
+
+.modal-dialog-scrollable .modal-content {
+  overflow: initial;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  opacity: 1;
+}
+
+.carousel-indicators {
+  bottom: -42px;
+}
+
+/* Disable default border */
+
+.accordion-button {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Replace default chevron image */
+
+.accordion-button::after {
+  background-image: url("./assets/icons/indicator.png") !important;
+}
+
+img {
+  image-rendering: pixelated;
+}
+
+@keyframes floating {
+  from {
+    transform: translate(0, 0px);
+  }
+  65% {
+    transform: translate(0, 10px);
+  }
+  to {
+    transform: translate(0, -0px);
+  }
+}
+
+@keyframes marquee-like-effect {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes ellipsis {
+  to {
+    transform: translateY(-6em);
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.two-line-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Loading ellipsis animation that will be added to the end of text ie Loading... */
+
+.loading,
+.no-tadpoles {
+  display: inline-block;
+  overflow: hidden;
+  height: 2.5rem;
+  line-height: 1.5em;
+  vertical-align: text-bottom;
+  margin-left: 0.5rem;
+}
+
+.loading::after {
+  display: inline-table;
+  white-space: pre;
+  text-align: left;
+  content: "\A.\A..\A...";
+  animation: ellipsis 1s steps(4) infinite;
+}
+
+.no-tadpoles {
+  height: 2.25rem;
+}
+
+.npc-shadow::after {
+  content: "";
+  height: 14px;
+  width: 28px;
+  border-radius: 50%;
+  background: #32323273;
+  position: absolute;
+  z-index: 0;
+  bottom: -43px;
+  left: 7px;
+}
+
+/* Custom scrollbar for item modal */
+
+.scrollable::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+  border-radius: 5px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: #eea368;
+}
+
+.running {
+  animation-duration: 10s;
+  animation-name: running;
+  animation-iteration-count: infinite;
+  transition-timing-function: linear;
+}
+
+@keyframes running {
+  0% {
+    transform: translateX(0) scaleX(1);
+    animation-timing-function: linear;
+  }
+  49% {
+    transform: translateX(200px) scaleX(1);
+    animation-timing-function: linear;
+  }
+  50% {
+    transform: translateX(200px) scaleX(-1);
+    animation-timing-function: linear;
+  }
+  100% {
+    transform: translateX(0) scaleX(-1);
+    animation-timing-function: linear;
+  }
+}
+
+.swimming {
+  animation-duration: 10s;
+  animation-name: swimming;
+  animation-iteration-count: infinite;
+  transition-timing-function: linear;
+}
+
+@keyframes swimming {
+  0% {
+    transform: translateX(0);
+    animation-timing-function: linear;
+  }
+  100% {
+    transform: translateX(300px);
+    animation-timing-function: linear;
+  }
+}
+
+.pointing {
+  animation-duration: 3s;
+  animation-name: pointing;
+  animation-iteration-count: infinite;
+  transition-timing-function: ease;
+}
+
+@keyframes pointing {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.launching {
+  animation-duration: 8s;
+  animation-name: launching;
+  transition-timing-function: ease-out;
+}
+
+@keyframes launching {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-1700px);
+  }
+}
+
+.cave {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.bulge-repeat {
+  animation: bulgeRepeat 1200ms steps(16, jump-none) infinite;
+}
+
+@keyframes bulgeRepeat {
+  0% {
+    transform: scale(1);
+  }
+  12.5% {
+    transform: scale(1.15, 0.9);
+  }
+  25%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+.flip {
+  animation: flipping 2s linear infinite;
+}
+
+@keyframes flipping {
+  0% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.bulge {
+  animation: bulge 300ms steps(4, jump-none);
+}
+
+@keyframes bulge {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15, 0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.ready {
+  animation: ready-shake 4s ease infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes ready-shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  2% {
+    transform: translate(2.625px, 0);
+  }
+  4% {
+    transform: translate(-2.625px, 0);
+  }
+  6% {
+    transform: translate(2.625px, 0);
+  }
+  8% {
+    transform: translate(-2.625px, 0);
+  }
+  10% {
+    transform: translate(2.625px, 0);
+  }
+  12% {
+    transform: translate(-2.625px, 0);
+  }
+  14% {
+    transform: translate(0px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
